@@ -1,26 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- 
+    * vue2와는 다르게 3의 경우에는  
+    * 컴포넌트 일므은 복합명사 최소한 단어 2개 이상 붙여야 함 -> 그렇지 않으면 error 발생
+  -->
+  <TodoHeader />
+  <TodoInput />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TodoHeader from "./components/TodoHeader.vue";
+import TodoInput from "./components/TodoInput.vue";
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    // 컴포넌트 이름 : 컴포넌트 내용
+    TodoHeader,
+    TodoInput,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>
