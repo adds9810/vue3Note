@@ -1,11 +1,18 @@
 <template>
-  <h1>컴포넌트 이름</h1>
+  <h1>{{ appTitle }}</h1>
+  <h4>{{ newTitle }}</h4>
 </template>
 
 <script>
+import { computed } from "vue";
+
 export default {
-  setup() {
-    return {};
+  props: ["appTitle"],
+  setup(props) {
+    const newTitle = computed(() => {
+      return props.appTitle + "!!";
+    });
+    return { newTitle };
   },
 };
 </script>
