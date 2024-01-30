@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  setup() {
+  setup(props, context) {
     function clearTodo() {
-      localStorage.clear();
+      context.emit("clear");
     }
     return { clearTodo };
   },

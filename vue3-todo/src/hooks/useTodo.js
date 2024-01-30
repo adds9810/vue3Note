@@ -21,14 +21,19 @@ function useTodo() {
   }
 
   function addTodoItem(todo) {
-    let obj = { complete: false, item: todo };
+    const obj = { complete: false, item: todo };
     todoItems.value.push(obj);
     // localStorage.setItem(todo, obj); JSON.stringify으로 데이터를 넣지 않으면 어떤 값인지 확인 불가
     localStorage.setItem(todo, JSON.stringify(obj));
   }
 
+  function clearTodoItem() {
+    localStorage.clear();
+    todoItems.value = [];
+  }
+
   // 기능들을 외부에서도 사용할 수 있도록 내보내기
-  return { todoItems, fecthTodos, addTodoItem };
+  return { todoItems, fecthTodos, addTodoItem, clearTodoItem };
 }
 
 export { useTodo };

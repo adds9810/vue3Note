@@ -8,7 +8,7 @@
   <!-- <TodoInput @하위컴포넌트 이벤트 이름="상위 컴포넌트의 메서드 이름" />-->
   <TodoList :todoItems="todoItems" @remove="removeTodoItem" />
   <!-- <TodoList :props이름="상위 컴포넌트의 데이터 이름" /> -->
-  <TodoFooter />
+  <TodoFooter @clear="clearTodoItem" />
 </template>
 
 <script>
@@ -45,14 +45,14 @@ export default {
     // function removeTodoItem(){}
 
     // useTodo에 구현한 기능 불러오기
-    const { todoItems, fecthTodos, addTodoItem } = useTodo();
+    const { todoItems, fecthTodos, addTodoItem, clearTodoItem } = useTodo();
 
     onBeforeMount(() => {
       todoItems.value = fecthTodos();
       //   console.log("2: onBeforeMount called");
     });
 
-    return { title, todoItems, addTodoItem };
+    return { title, todoItems, addTodoItem, clearTodoItem };
   },
   methods: {
     // 인스턴트 방식으로도 이벤트 구현 가능
@@ -61,6 +61,8 @@ export default {
       this.todoItems.splice(index, 1);
       localStorage.removeItem(item);
     },
+    // 중앙관리식 데이터 요청
+    // 한 컴포넌트 안에 기능을 모두 가지고 있고 나머지 컴포넌트 에서는 그 데이터를 접근한 데보다 그 데이터를 바꿔달라고 요청만 하는
   },
 };
 </script>
