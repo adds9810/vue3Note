@@ -18,11 +18,13 @@
 
 <script>
 import { ref } from "vue";
+import { useStore } from "vuex";
 import Modal from "./common/ModalWrap.vue";
 
 export default {
   components: { Modal },
-  setup(props, context) {
+  // setup(props, context) {
+  setup() {
     // 할일을 등록하면 바로 목록으로 등록되게끔 작업
     // vue3 setup에서는 context에 emit을 담아 이벤트를 보냄
 
@@ -31,14 +33,18 @@ export default {
     const showModal = ref(false);
     const todoInput = ref(""),
       modalTit = ref(""),
-      modalTxt = ref("");
+      modalTxt = ref(""),
+      store = useStore();
 
     //methods
     function addTodo() {
       const todo = todoInput.value;
+      // trim() : 앞뒤 공백을 비워줌
       //   localStorage.setItem(todo, todo);
       if (todo !== "") {
-        context.emit("add", todo);
+        // context.emit("add", todo);
+        // this.$store.commit("addTodoItem");
+        store.commit("addTodoItem", "ddd");
         // 태그 초기화
         clearTodo();
       } else {
@@ -52,7 +58,7 @@ export default {
 
     const clearTodo = () => (todoInput.value = "");
 
-    return { todoInput, addTodo, showModal, modalTit, modalTxt, modalFooter };
+    return { todoInput, addTodo, showModal, modalTit, modalTxt };
   },
 };
 </script>
