@@ -14,12 +14,14 @@
 
 <script>
 import { watch } from "vue";
+import { useStore } from "vuex";
 
 // import { ref } from "vue";
 
 export default {
   props: ["todoItems"],
-  setup(props, context) {
+  setup(props) {
+    const store = useStore();
     // setup(props,{emit}) === setup(props, context)
     // props는 destruturing 하면 안 되지만 emit은 destruturing 해도 됨
     //     //data
@@ -38,8 +40,14 @@ export default {
     //     return { items };
 
     function removeTodo(item, index) {
-      context.emit("remove", item, index);
+      // context.emit("remove", item, index);
       // emit("remove", item, index);
+      // const obj = {
+      //   item:item,
+      //   index:index
+      // }
+      // this.$store.commit('removeTodoItem',obj)
+      store.commit("removeTodoItem", { item, index });
     }
 
     // watch

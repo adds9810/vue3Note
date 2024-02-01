@@ -6,7 +6,8 @@
   <TodoHeader :appTitle="title" />
   <TodoInput @add="addTodoItem" />
   <!-- <TodoInput @하위컴포넌트 이벤트 이름="상위 컴포넌트의 메서드 이름" />-->
-  <TodoList :todoItems="this.$store.state.todoItems" @remove="removeTodoItem" />
+  <!-- <TodoList :todoItems="this.$store.state.todoItems" @remove="removeTodoItem" /> -->
+  <TodoList :todoItems="this.$store.state.todoItems" />
   <!-- <TodoList :props이름="상위 컴포넌트의 데이터 이름" /> -->
   <TodoFooter @clear="clearTodoItem" />
 </template>
@@ -59,10 +60,10 @@ export default {
   methods: {
     // 인스턴트 방식으로도 이벤트 구현 가능
     // 어느정도는 인스턴트 방식으로 구현하고 코드가 길어지면 setup방식으로 구현하면 좋을 것 같음..
-    removeTodoItem(item, index) {
-      this.todoItems.splice(index, 1);
-      localStorage.removeItem(item);
-    },
+    // removeTodoItem(item, index) {
+    //   // this.todoItems.splice(index, 1);
+    //   // localStorage.removeItem(item);
+    // },
     // 중앙관리식 데이터 요청
     // 한 컴포넌트 안에 기능을 모두 가지고 있고 나머지 컴포넌트 에서는 그 데이터를 접근한 데보다 그 데이터를 바꿔달라고 요청만 하는
   },
