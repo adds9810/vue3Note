@@ -3,12 +3,11 @@
 // todo 관련된 동작들을 app.vue에서 옮겨옴
 // app.vue에서 필요한 것들만 빠르게 확인 가능
 
-import { ref } from "vue";
+// import { ref } from "vue";
 
 function useTodo() {
   // data
-  const todoItems = ref([]);
-
+  // const todoItems = ref([]);
   // methods
   // function fecthTodos() {
   //   const result = [];
@@ -19,22 +18,18 @@ function useTodo() {
   //   }
   //   return result;
   // }
-
   // function addTodoItem(todo) {
   //   const obj = { complete: false, item: todo };
   //   todoItems.value.push(obj);
   //   // localStorage.setItem(todo, obj); JSON.stringify으로 데이터를 넣지 않으면 어떤 값인지 확인 불가
   //   localStorage.setItem(todo, JSON.stringify(obj));
   // }
-
-  function clearTodoItem() {
-    localStorage.clear();
-    todoItems.value = [];
-  }
-
+  // function clearTodoItem() {
+  //   localStorage.clear();
+  //   todoItems.value = [];
+  // }
   // 기능들을 외부에서도 사용할 수 있도록 내보내기
   //return { todoItems,fecthTodos, addTodoItem, clearTodoItem };
-  return { todoItems, clearTodoItem };
 }
 
 export { useTodo };

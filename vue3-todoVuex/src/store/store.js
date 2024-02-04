@@ -13,9 +13,9 @@ const storage = {
     // return arr;
     const result = [];
     for (let i = 0; i < localStorage.length; i++) {
-      const todoItem = localStorage.key(i);
+      const todoItem = localStorage.getItem(localStorage.key(i));
       // items.value.push(todoItem);
-      result.push(todoItem);
+      result.push(JSON.parse(todoItem));
     }
     return result;
   },
@@ -31,7 +31,18 @@ const store = createStore({
     },
     removeTodoItem(state, payload) {
       state.todoItems.splice(payload.index, 1);
-      localStorage.removeItem(payload.item);
+      localStorage.removeItem(payload.item.item);
+    },
+    toggleTodoItem(state, payload) {
+      state.todoItems[payload.index].complete =
+        !state.todoItems[payload.index].complete;
+      // 로컬 스토리지 데이터 갱신
+      localStorage.removeItem(payload.item.item);
+      localStorage.setItem(payload.item.item, JSON.stringify(payload.item));
+    },
+    clearTodoItem(state) {
+      localStorage.clear();
+      state.todoItems = [];
     },
   },
   actions: {},

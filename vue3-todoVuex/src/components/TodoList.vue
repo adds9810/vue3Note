@@ -5,7 +5,7 @@
       :key="index"
       :class="{ chk: item.complete }"
     >
-      <span class="chkBtn" @click="toggleComplete(item)"></span>
+      <span class="chkBtn" @click="toggleComplete(item, index)"></span>
       <span>{{ item.item }}</span>
       <button @click="removeTodo(item, index)">삭제</button>
     </li>
@@ -58,11 +58,13 @@ export default {
       //   localStorage.setItem();
     });
 
-    function toggleComplete(item) {
-      item.complete = !item.complete;
-      // 로컬 스토리지 데이터 갱신
-      localStorage.removeItem(item.item);
-      localStorage.setItem(item.item, item);
+    function toggleComplete(item, index) {
+      // item.complete = !item.complete;
+      // // 로컬 스토리지 데이터 갱신
+      // localStorage.removeItem(item.item);
+      // localStorage.setItem(item.item, item);
+      console.log(item, index);
+      store.commit("toggleTodoItem", { item, index });
     }
 
     return { removeTodo, toggleComplete };

@@ -44,7 +44,7 @@ export default {
       if (todo !== "") {
         // context.emit("add", todo);
         // this.$store.commit("addTodoItem");
-        store.commit("addTodoItem", "ddd");
+        store.commit("addTodoItem", todo);
         // 태그 초기화
         clearTodo();
       } else {

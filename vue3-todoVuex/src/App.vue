@@ -4,12 +4,13 @@
     * 컴포넌트 일므은 복합명사 최소한 단어 2개 이상 붙여야 함 -> 그렇지 않으면 error 발생
   -->
   <TodoHeader :appTitle="title" />
-  <TodoInput @add="addTodoItem" />
+  <TodoInput />
   <!-- <TodoInput @하위컴포넌트 이벤트 이름="상위 컴포넌트의 메서드 이름" />-->
   <!-- <TodoList :todoItems="this.$store.state.todoItems" @remove="removeTodoItem" /> -->
   <TodoList :todoItems="this.$store.state.todoItems" />
   <!-- <TodoList :props이름="상위 컴포넌트의 데이터 이름" /> -->
-  <TodoFooter @clear="clearTodoItem" />
+  <!-- <TodoFooter @clear="clearTodoItem" /> -->
+  <TodoFooter />
 </template>
 
 <script>
@@ -18,7 +19,7 @@ import TodoHeader from "./components/TodoHeader.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
-import { useTodo } from "./hooks/useTodo";
+// import { useTodo } from "./hooks/useTodo";
 
 export default {
   components: {
@@ -47,7 +48,6 @@ export default {
 
     // useTodo에 구현한 기능 불러오기
     //const { todoItems, fecthTodos, addTodoItem, clearTodoItem } = useTodo();
-    const { todoItems, addTodoItem, clearTodoItem } = useTodo();
 
     onBeforeMount(() => {
       // todoItems.value = fecthTodos();
@@ -55,7 +55,7 @@ export default {
       //   console.log("2: onBeforeMount called");
     });
 
-    return { title, todoItems, addTodoItem, clearTodoItem };
+    return { title };
   },
   methods: {
     // 인스턴트 방식으로도 이벤트 구현 가능

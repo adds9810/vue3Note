@@ -3,10 +3,13 @@
 </template>
 
 <script>
+import { useStore } from "vuex";
+
 export default {
-  setup(props, context) {
+  setup() {
+    const store = useStore();
     function clearTodo() {
-      context.emit("clear");
+      store.commit("clearTodoItem");
     }
     return { clearTodo };
   },
