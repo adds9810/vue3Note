@@ -45,7 +45,7 @@ const store = createStore({
       state.todoItems = [];
     },
   },
-  actions: {},
+  actions: {}, // 비동기 처리 로직을 선언하는 메서드, fetch api 실행하는 곳이기도 함(state 값의 변화를 추적하기 어렵기 때문에 mutations 속성에는 동기 처리 로직만 넣어야 함)
   getters: {},
 });
 
